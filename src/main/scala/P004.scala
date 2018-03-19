@@ -2,7 +2,7 @@ object P004 {
   private def isPalindrome(number: Long): Boolean =
     number.toString == number.toString.reverse
 
-  def largestPalindromeProduct(numberDigits: Int = 2): Option[Long] = {
+  def largestPalindromeProduct(numberDigits: Int): Option[Long] = {
     val (min, max) = numberDigits match {
       case 1 => (1, 9)
       case 2 => (10, 99)
