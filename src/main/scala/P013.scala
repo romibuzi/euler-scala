@@ -1,7 +1,7 @@
 import scala.io.Source
 
 object P013 {
-   private def readNumbers: List[BigInt] =
+  private def readNumbers: List[BigInt] =
     Source
       .fromResource("p013_numbers.txt")
       .getLines()
