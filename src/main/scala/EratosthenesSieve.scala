@@ -15,5 +15,5 @@ object EratosthenesSieve {
     sieve(numbers.filter(x => x % first != 0), primes :+ first)
   }
 
-  def sieve(numbers: List[Long]): List[Long] = sieve(numbers, List.empty)
+  def apply(numbers: List[Long]): List[Long] = sieve(numbers, List.empty)
 }
