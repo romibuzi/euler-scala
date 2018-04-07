@@ -14,4 +14,9 @@ object MathHelper {
 
   def square[T](n: T)(implicit numeric: Numeric[T]): T =
     numeric.times(n, n)
+
+  def sumOfProperDivisors(n: Int): Int = {
+    val sqrt = Math.sqrt(n).toInt
+    1 + (2 to sqrt).filter(n % _ == 0).flatMap(x => List(x, n / x)).toSet.sum
+  }
 }

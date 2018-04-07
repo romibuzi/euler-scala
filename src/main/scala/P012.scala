@@ -1,10 +1,14 @@
+import MathHelper.square
+
 import scala.annotation.tailrec
 
 object P012 {
   private def countDivisors(number: Int): Int = {
     val sqrt = Math.sqrt(number).toInt
-    val perfectSquare = if (number % sqrt == 0) 1 else 0
-
+    val perfectSquare = number % sqrt match {
+      case 0 => if (square(sqrt) == number) 1 else 2
+      case _ => 0
+    }
     // multiply by 2 as counting until sqrt(number)
     2 * (1 until sqrt).count(number % _ == 0) + perfectSquare
   }
