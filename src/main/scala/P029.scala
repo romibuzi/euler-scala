@@ -1,5 +1,5 @@
 object P029 {
-  def distinctPowers(n: scala.Int): Int = {
+  def distinctPowers(n: Int): Int = {
     val values = (2 to n) flatMap { a =>
       (2 to n) map { b =>
         Math.pow(a, b)
