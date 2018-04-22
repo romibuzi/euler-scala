@@ -1,4 +1,4 @@
-import scala.collection.mutable.ListBuffer
+import scala.collection.mutable.ArrayBuffer
 
 object Months extends Enumeration {
   val January, February, March, April, May,
@@ -12,8 +12,8 @@ object P019 {
   private def isLeapYear(year: Int): Boolean =
     year % 4 == 0 && (year % 100 != 0 || year % 400 == 0)
 
-  private def numberOfDaysPerMonthAndYear: List[Int] = {
-    val buf = ListBuffer.empty[Int]
+  private def numberOfDaysPerMonthAndYear: Array[Int] = {
+    val buf = ArrayBuffer.empty[Int]
     for {
       year <- 1900 to 2000
       month <- Months.values
@@ -25,7 +25,7 @@ object P019 {
       }
       buf += nbDays
     }
-    buf.toList
+    buf.toArray
   }
 
   def countingSundays: Int = {

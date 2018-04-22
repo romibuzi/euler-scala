@@ -17,7 +17,7 @@ object P007 {
         val limit = (n * (Math.log(n) + Math.log(Math.log(n)))).toLong
 
         // List is indexed from 0, so nth prime is (n - 1) of the list
-        EratosthenesSieve((2L until limit).toList)(n - 1)
+        EratosthenesSieve((2L until limit).toVector)(n - 1)
     }
   }
 }

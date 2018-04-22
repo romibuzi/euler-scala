@@ -8,12 +8,12 @@ import scala.annotation.tailrec
   */
 object EratosthenesSieve {
   @tailrec
-  private def sieve(numbers: List[Long], primes: List[Long]): List[Long] = {
+  private def sieve(numbers: Vector[Long], primes: Vector[Long]): Vector[Long] = {
     val first = numbers.head
-    if (square(first) > numbers.last) return primes ::: numbers
+    if (square(first) > numbers.last) return primes ++ numbers
 
     sieve(numbers.filter(x => x % first != 0), primes :+ first)
   }
 
-  def apply(numbers: List[Long]): List[Long] = sieve(numbers, List.empty)
+  def apply(numbers: Vector[Long]): Vector[Long] = sieve(numbers, Vector.empty)
 }
