@@ -16,9 +16,7 @@ object P028 {
     all spirals are 4 numbers length
    */
   @tailrec
-  def nextSpiralSum(previousSpiralsSum: Int = 1,
-                    previousSpiralLast: Int = 1,
-                    increment: Int = 2): Int = {
+  def nextSpiralSum(previousSpiralsSum: Int, previousSpiralLast: Int, increment: Int): Int = {
     if (previousSpiralLast >= MathHelper.square(1001)) return previousSpiralsSum
 
     val spiral = (1 to 4).scanLeft(previousSpiralLast) {
@@ -27,4 +25,6 @@ object P028 {
 
     nextSpiralSum(previousSpiralsSum + spiral.sum, spiral.last, increment + 2)
   }
+
+  def sumOfDiagonals: Int = nextSpiralSum(1, 1, 2)
 }
