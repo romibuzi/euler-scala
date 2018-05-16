@@ -20,8 +20,9 @@ object P004 {
     for {
       a <- max to min by -1
       b <- max to min by -1
-      if isPalindrome(a * b)
-    } return Some(a * b)
+      product = a * b
+      if isPalindrome(product)
+    } return Some(product)
 
     None
   }
