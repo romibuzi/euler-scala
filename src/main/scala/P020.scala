@@ -1,6 +1,6 @@
-import MathHelper.factorial
+import MathHelper.{numberDigits, factorial}
 
 object P020 {
   def factorialDigitSum(n: Int): Int =
-    factorial(n).toString.map(_.asDigit).sum
+    numberDigits(factorial(n)).sum
 }

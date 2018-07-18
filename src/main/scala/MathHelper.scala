@@ -12,6 +12,9 @@ object MathHelper {
     fact(1, n)
   }
 
+  def numberDigits[T](number: T): List[Int] =
+    number.toString.map(_.asDigit).toList
+
   def square[T](n: T)(implicit numeric: Numeric[T]): T =
     numeric.times(n, n)
 

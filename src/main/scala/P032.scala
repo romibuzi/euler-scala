@@ -2,7 +2,7 @@ object P032 {
   val DISTINCT_NUMBERS: Set[Int] = (1 to 9).toSet
 
   def isPandigital(product: Int, a: Int, b: Int): Boolean = {
-    val numbers = Set(product, a, b).flatMap(_.toString.map(_.asDigit))
+    val numbers = Set(product, a, b).flatMap(MathHelper.numberDigits)
     numbers.size == DISTINCT_NUMBERS.size && DISTINCT_NUMBERS.diff(numbers).isEmpty
   }
 
