@@ -1,5 +1,4 @@
 import scala.annotation.tailrec
-import scala.collection.mutable
 
 object MathHelper {
   val DISTINCT_NUMBERS: List[Int] = (1 to 9).toList
@@ -39,8 +38,7 @@ object MathHelper {
 
   // Array(0, end) where non-primes are `false` and primes are `true`
   def primesIndices(end: Int): Array[Boolean] = {
-    val indices = mutable.ArrayBuffer.fill(end + 1)(true)
-    indices(0) = false
+    val indices = Array.fill(end + 1)(true)
     indices(1) = false
 
     val primesBelowSqrt = 2 +: (3 to Math.sqrt(end).toInt by 2).toList
@@ -51,7 +49,7 @@ object MathHelper {
       if (indices(nonPrime)) indices(nonPrime) = false
     }
 
-    indices.toArray
+    indices
   }
 
   def square[T](n: T)(implicit numeric: Numeric[T]): T = numeric.times(n, n)
