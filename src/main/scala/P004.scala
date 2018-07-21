@@ -1,7 +1,4 @@
 object P004 {
-  private def isPalindrome(number: Long): Boolean =
-    number.toString == number.toString.reverse
-
   def largestPalindromeProduct(numberDigits: Int): Option[Long] = {
     val (min, max) = numberDigits match {
       case 1 => (1, 9)
@@ -21,7 +18,7 @@ object P004 {
       a <- max to min by -1
       b <- max to min by -1
       product = a * b
-      if isPalindrome(product)
+      if MathHelper.isPalindrome(product.toString)
     } return Some(product)
 
     None
