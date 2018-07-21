@@ -2,6 +2,8 @@ import scala.annotation.tailrec
 import scala.collection.mutable
 
 object MathHelper {
+  val DISTINCT_NUMBERS: List[Int] = (1 to 9).toList
+
   def factorial(n: BigInt): BigInt = {
     @tailrec
     def fact(acc: BigInt, x: BigInt): BigInt = {
@@ -14,6 +16,11 @@ object MathHelper {
   }
 
   def isPalindrome(number: String): Boolean = number == number.reverse
+
+  def isPandigital(number: String): Boolean = {
+    val digits = numberDigits(number)
+    digits.length == DISTINCT_NUMBERS.length && DISTINCT_NUMBERS.diff(digits).isEmpty
+  }
 
   def isPrime(n: Int): Boolean = n match {
     case _ if n == 0 || n == 1 => false
