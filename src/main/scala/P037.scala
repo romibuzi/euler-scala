@@ -24,7 +24,8 @@ object P037 {
   }
 
   def elevenTruncatablePrimesSum: Int = {
-    Stream.from(11)
+    Stream
+      .from(11)
       .filter(isTruncatablePrime(_, LeftToRight))
       .filter(isTruncatablePrime(_, RightToLeft))
       .take(11)

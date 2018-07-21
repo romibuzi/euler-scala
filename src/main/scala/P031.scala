@@ -6,7 +6,7 @@ object P031 {
     ways(0) = 1
 
     for (coin <- coins; n <- coin to target) {
-      ways(n) += ways(n -coin)
+      ways(n) += ways(n - coin)
     }
 
     ways(target)
