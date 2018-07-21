@@ -39,6 +39,7 @@ object MathHelper {
   // Array(0, end) where non-primes are `false` and primes are `true`
   def primesIndices(end: Int): Array[Boolean] = {
     val indices = Array.fill(end + 1)(true)
+    indices(0) = false
     indices(1) = false
 
     val primesBelowSqrt = 2 +: (3 to Math.sqrt(end).toInt by 2).toList
