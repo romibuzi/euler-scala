@@ -1,4 +1,4 @@
-import MathHelper.isPandigital
+import MathHelper.is1to9Pandigital
 
 object P032 {
   def sumOfPandigitalProducts: Int = {
@@ -7,7 +7,7 @@ object P032 {
       start = if (a < 10) 1000 else 100
       b <- start until 10000 / a
       product = a * b
-      if isPandigital(List(product, a, b).mkString)
+      if is1to9Pandigital(List(product, a, b).mkString)
     } yield product
 
     products.distinct.sum
