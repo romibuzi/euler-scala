@@ -5,7 +5,7 @@ object P008 {
     Source
       .fromResource("p008_series.txt")
       .getLines()
-      .mkString("")
+      .mkString
       .map(_.asDigit.toLong)
       .toList
 

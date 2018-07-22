@@ -7,7 +7,7 @@ object P022 {
     Source
       .fromResource("p022_names.txt")
       .getLines()
-      .mkString("")
+      .mkString
       .split(",")
       .toList
       .sorted
