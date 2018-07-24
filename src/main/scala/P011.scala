@@ -1,16 +1,8 @@
-import scala.io.Source
+import Reader.readNumbersGrid
 
 object P011 {
-  def readGrid: List[List[Int]] = {
-    Source
-      .fromResource("p011_grid.txt")
-      .getLines
-      .map(line => line.split(" ").map(_.toInt).toList)
-      .toList
-  }
-
   def largestProductInGrid(): Int = {
-    val grid = readGrid
+    val grid = readNumbersGrid("p011_grid.txt")
 
     grid.zipWithIndex.flatMap {
       case (lineNumbers, y) => lineNumbers.zipWithIndex.map {

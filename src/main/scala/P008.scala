@@ -1,10 +1,6 @@
-import scala.io.Source
-
 object P008 {
   private def readSeries: List[Long] =
-    Source
-      .fromResource("p008_series.txt")
-      .getLines()
+    Reader.getLines("p008_series.txt")
       .mkString
       .map(_.asDigit.toLong)
       .toList

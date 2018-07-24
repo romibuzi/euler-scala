@@ -1,10 +1,6 @@
-import scala.io.Source
-
 object P013 {
   private def readNumbers: List[BigInt] =
-    Source
-      .fromResource("p013_numbers.txt")
-      .getLines()
+    Reader.getLines("p013_numbers.txt")
       .map(BigInt(_))
       .toList
 

@@ -1,14 +1,8 @@
+import Reader.readNumbersGrid
+
 import scala.annotation.tailrec
-import scala.io.Source
 
 object P018 {
-  def readTriangle: List[List[Int]] =
-    Source
-      .fromResource("p018_triangle.txt")
-      .getLines
-      .map(line => line.split(" ").map(_.toInt).toList)
-      .toList
-
   @tailrec
   def maxBottomPaths(tops: List[List[Int]], bottom: List[Int]): Int = {
     val bottomMaxs = bottom.sliding(2).map(pair => pair.head max pair.last).toList
@@ -21,7 +15,7 @@ object P018 {
   }
 
   def maximumPathSum: Int = {
-    val triangle = readTriangle
+    val triangle = readNumbersGrid("p018_triangle.txt")
     maxBottomPaths(triangle.init, triangle.last)
   }
 }
