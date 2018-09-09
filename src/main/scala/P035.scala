@@ -4,8 +4,8 @@ object P035 {
   val MILLION = 1000000
   val primes: Array[Boolean] = MathHelper.primesIndices(MILLION)
 
-  def rotateRight(seq: Seq[Int]): Seq[Int] =
-    seq.takeRight(1) ++ seq.dropRight(1)
+  def rotateRight(digits: Seq[Int]): Seq[Int] =
+    digits.takeRight(1) ++ digits.dropRight(1)
 
   @tailrec
   def isCircularPrime(digits: Seq[Int], idx: Int = 0): Boolean = {
