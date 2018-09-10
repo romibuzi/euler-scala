@@ -21,6 +21,10 @@ object MathHelper {
     digits.length == ONE_TO_NINE.length && ONE_TO_NINE.diff(digits).isEmpty
   }
 
+  // https://en.wikipedia.org/wiki/Pentagonal_number#Tests_for_pentagonal_numbers
+  def isPentagonal(number: Long): Boolean =
+    ((Math.sqrt(1 + number * 24) + 1.0) / 6.0).isWhole
+
   def isPrime(n: Int): Boolean = n match {
     case _ if n == 0 || n == 1 => false
     case _ if n == 2 => true
