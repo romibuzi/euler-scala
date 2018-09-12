@@ -1,24 +1,34 @@
 import MathHelper.sumOfProperDivisors
 
-import scala.annotation.tailrec
-
 object P023 {
-  def isAbundant(n: Int): Boolean = sumOfProperDivisors(n) > n
+  val LIMIT = 28123
+  val abundants: Array[Boolean] = abundantsIndices(LIMIT)
 
-  def findAllAbundants(limit: Int): Int = {
-    val abundants = (1 to limit).filter(isAbundant).toSet
+  def isAbundant(number: Int): Boolean =
+    sumOfProperDivisors(number) > number
 
-    @tailrec
-    def notSumAbundantNumbers(num: Int, numbers: List[Int]): List[Int] = {
-      if (num >= limit) return numbers
+  // Array(0, limit) where non-abundants are `false` and abundants are `true`
+  def abundantsIndices(limit: Int): Array[Boolean] = {
+    val abundants = Array.fill(limit + 1)(false)
 
-      val lowerAbundants = abundants.filter(_ < num)
-      if (!lowerAbundants.exists(x => lowerAbundants.contains(num - x)))
-        notSumAbundantNumbers(num + 1, numbers :+ num)
-      else
-        notSumAbundantNumbers(num + 1, numbers)
+    for (number <- 1 to abundants.length) {
+      if (isAbundant(number)) abundants(number) = true
     }
 
-    notSumAbundantNumbers(1, List.empty).sum
+    abundants
   }
+
+  def isSumOf2Abundants(number: Int): Boolean = {
+    for (i <- 0 until number) {
+      if (abundants(i) && abundants(number - i))
+        return true
+    }
+
+    false
+  }
+
+  def findAllNotSumOf2Abundants: Int =
+    (1 to LIMIT)
+      .filterNot(number => isSumOf2Abundants(number))
+      .sum
 }
