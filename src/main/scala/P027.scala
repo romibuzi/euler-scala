@@ -12,7 +12,7 @@ object P027 {
   def quadraticPrimes: Int = {
     val quadraticLengths = for {
       a <- -999 to 1000 by 2
-      b <- EratosthenesSieve((2L to 1000).toVector).map(_.toInt)
+      b <- EratosthenesSieve(1000).map(_.toInt)
       q = lengthQuadratic(a, b, 0)
     } yield (a * b, q)
 
