@@ -2,7 +2,7 @@ name := "euler-scala"
 
 version := "0.1"
 
-scalaVersion := "2.12.6"
+scalaVersion := "2.12.7"
 
 // log time execution for each test
 testOptions in Test += Tests.Argument("-oD")
