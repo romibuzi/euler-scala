@@ -25,16 +25,19 @@ object MathHelper {
   def isPentagonal(number: Long): Boolean =
     ((Math.sqrt(1 + number * 24) + 1.0) / 6.0).isWhole
 
-  def isPrime(n: Int): Boolean = n match {
-    case _ if n == 0 || n == 1 => false
-    case _ if n == 2 => true
-    case _ if n % 2 == 0 => false
-    case _ =>
-      val end = Math.sqrt(n).toInt
-      for (i <- 3 to end by 2) {
-        if (n % i == 0) return false
-      }
-      true
+  def isPrime[T: Integral](number: T)(implicit numeric: Integral[T]): Boolean = {
+    import numeric._
+    number match {
+      case _ if number == 0 || number == 1 => false
+      case _ if number == 2 => true
+      case _ if number % numeric.fromInt(2) == 0 => false
+      case _ =>
+        val end = Math.sqrt(numeric.toDouble(number)).toInt
+        for (i <- 3 to end by 2) {
+          if (number % numeric.fromInt(i) == 0) return false
+        }
+        true
+    }
   }
 
   def numberDigits[T](number: T): List[Int] =
@@ -57,7 +60,7 @@ object MathHelper {
     indices
   }
 
-  def square[T](n: T)(implicit numeric: Numeric[T]): T = numeric.times(n, n)
+  def square[T: Integral](n: T)(implicit numeric: Integral[T]): T = numeric.times(n, n)
 
   def sumOfProperDivisors(n: Int): Int = {
     val sqrt = Math.sqrt(n).toInt
