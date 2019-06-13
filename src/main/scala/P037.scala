@@ -24,7 +24,7 @@ object P037 {
   }
 
   def elevenTruncatablePrimesSum: Int = {
-    Stream
+    LazyList
       .from(11)
       .filter(isTruncatablePrime(_, LeftToRight))
       .filter(isTruncatablePrime(_, RightToLeft))

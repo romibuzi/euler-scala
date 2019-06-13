@@ -19,12 +19,9 @@ object P023 {
   }
 
   def isSumOf2Abundants(number: Int): Boolean = {
-    for (i <- 0 until number) {
-      if (abundants(i) && abundants(number - i))
-        return true
+    (0 until number).exists { i =>
+      abundants(i) && abundants(number - i)
     }
-
-    false
   }
 
   def findAllNotSumOf2Abundants: Int =

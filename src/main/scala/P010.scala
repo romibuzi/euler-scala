@@ -1,4 +1,4 @@
 object P010 {
-  def sumOfPrimes(limit: Long): Long =
+  def sumOfPrimes(limit: Int): Long =
     EratosthenesSieve(limit).sum
 }

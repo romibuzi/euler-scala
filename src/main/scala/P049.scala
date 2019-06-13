@@ -10,7 +10,7 @@ object P049 {
     sequence.forall(MathHelper.isPrime)
 
   def isSequenceOfPermutations(sequence: Seq[Int]): Boolean =
-    sequence.map(_.toString.sorted).distinct.length == 1
+    sequence.map(_.toString.toSeq.sorted.unwrap).distinct.length == 1
 
   def primePermutations: String = {
     (START to LIMIT - 2 * STEP)

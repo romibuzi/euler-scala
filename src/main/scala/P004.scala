@@ -1,5 +1,5 @@
 object P004 {
-  def largestPalindromeProduct(numberDigits: Int): Option[Long] = {
+  def largestPalindromeProduct(numberDigits: Int): Option[Int] = {
     val (min, max) = numberDigits match {
       case 1 => (1, 9)
       case 2 => (10, 99)
@@ -11,16 +11,10 @@ object P004 {
         )
     }
 
-    // Brute force approach
-    // test all products of two n-digits numbers
-    // return the first palindrome found which corresponds to the largest possible one
-    for {
-      a <- max to min by -1
-      b <- max to min by -1
-      product = a * b
-      if MathHelper.isPalindrome(product.toString)
-    } return Some(product)
-
-    None
+    (max to min by -1).view.flatMap { a =>
+      (max to min by -1).map { b =>
+        a * b
+      }
+    }.find(product => MathHelper.isPalindrome(product.toString))
   }
 }

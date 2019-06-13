@@ -6,13 +6,9 @@ object P041 {
     val limit = 7654321
     val primes = MathHelper.primesIndices(limit)
 
-    for {
-      permutation <- MathHelper.numberDigits(limit).permutations
-      number = permutation.mkString.toInt
-    } {
-      if (primes(number)) return Option(number)
-    }
-
-    None
+    MathHelper.numberDigits(limit)
+      .permutations
+      .map(_.mkString.toInt)
+      .find(primes(_))
   }
 }

@@ -7,7 +7,7 @@ object MathHelper {
     @tailrec
     def fact(acc: BigInt, x: BigInt): BigInt = {
       x match {
-        case zero if x == 0 => acc
+        case _ if x == 0 => acc
         case _ => fact(acc * x, x - 1)
       }
     }
@@ -33,10 +33,7 @@ object MathHelper {
       case _ if number % numeric.fromInt(2) == 0 => false
       case _ =>
         val end = Math.sqrt(numeric.toDouble(number)).toInt
-        for (i <- 3 to end by 2) {
-          if (number % numeric.fromInt(i) == 0) return false
-        }
-        true
+        (3 to end by 2).forall(number % numeric.fromInt(_) != 0)
     }
   }
 

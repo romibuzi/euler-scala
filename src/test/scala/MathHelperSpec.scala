@@ -1,8 +1,8 @@
 import org.scalacheck.Gen
 import org.scalatest._
-import org.scalatest.prop.GeneratorDrivenPropertyChecks
+import org.scalatestplus.scalacheck.ScalaCheckDrivenPropertyChecks
 
-class MathHelperSpec extends FlatSpec with Matchers with GeneratorDrivenPropertyChecks {
+class MathHelperSpec extends FlatSpec with Matchers with ScalaCheckDrivenPropertyChecks {
   "MathHelper " should "identify pentagonal numbers" in {
     val pentagonalNumbers =
       for (n <- Gen.choose(1, 10000)) yield (3 * MathHelper.square(n) - n) / 2

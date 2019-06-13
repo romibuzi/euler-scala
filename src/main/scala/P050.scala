@@ -7,17 +7,11 @@ object P050 {
     val primes = EratosthenesSieve(limit)
     val searchablePrimes = takePrimesNotExceedingLimitWithTheirSum(primes, limit)
 
-    for (consecutiveLength <- searchablePrimes.length to 1 by -1) {
-      val primesSumsBeingPrime: Iterator[Long] = searchablePrimes
-        .sliding(consecutiveLength)
+    (searchablePrimes.length to 1 by -1).view.map { length =>
+      searchablePrimes
+        .sliding(length)
         .map(_.sum)
         .filter(primesSum => primes.contains(primesSum))
-
-      if (primesSumsBeingPrime.hasNext) {
-        return Some(primesSumsBeingPrime.max)
-      }
-    }
-
-    None
+    }.find(_.hasNext).map(_.max)
   }
 }

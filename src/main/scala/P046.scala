@@ -4,13 +4,9 @@ object P046 {
   val primes = EratosthenesSieve(10000)
 
   private def isSumOfPrimeAndTwiceSquare(number: Int): Boolean = {
-    for (prime <- primes if prime < number) {
-      if (Math.sqrt((number - prime) / 2).isWhole) {
-        return true
-      }
+    primes.takeWhile(_ < number).exists { prime =>
+      Math.sqrt((number - prime) / 2).isWhole
     }
-
-    false
   }
 
   @tailrec

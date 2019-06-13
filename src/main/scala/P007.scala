@@ -14,7 +14,7 @@ object P007 {
         // we can define that p(n) ~= n * log n
         // where p(n) is the nth prime
         // This will be the upper bound of the Sieve
-        val limit = (n * (Math.log(n) + Math.log(Math.log(n)))).toLong
+        val limit = (n * (Math.log(n) + Math.log(Math.log(n)))).toInt
 
         // List is indexed from 0, so nth prime is (n - 1) of the list
         EratosthenesSieve(limit)(n - 1)

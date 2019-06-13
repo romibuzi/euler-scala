@@ -2,7 +2,7 @@ import Reader.readWords
 import Word.wordValue
 
 object P042 {
-  val triangles: Stream[Int] = Stream.from(1).map(number => number * (number + 1) / 2)
+  val triangles: LazyList[Int] = LazyList.from(1).map(number => number * (number + 1) / 2)
 
   def isTriangle(number: Int): Boolean =
     triangles.takeWhile(_ <= number).contains(number)

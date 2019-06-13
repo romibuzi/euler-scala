@@ -1,22 +1,21 @@
 object P043 {
   val firstPrimes = List(2, 3, 5, 7, 11, 13, 17)
 
-  def addMissingZero(n: String): String =
-    if (n.toInt < 100) s"0$n" else n
+  def addMissingZero(number: String): String =
+    if (number.toInt < 100) s"0$number" else number
 
-  def addMissingDistinctNumber(n: String): String = {
-    for (digit <- "0123456789") {
-      if (!(n contains digit)) return digit + n
-    }
-
-    n
+  def addMissingDistinctNumber(number: String): String = {
+    "0123456789"
+      .find(digit => !(number contains digit))
+      .map(digit => s"$digit$number")
+      .getOrElse(number)
   }
 
-  def isDistinctNumber(n: String): Boolean =
-    n == n.distinct
+  def isDistinctNumber(number: String): Boolean =
+    number == number.toSeq.distinct.unwrap
 
   def multiplesBelow1000(number: Int): List[String] =
-    Stream
+    LazyList
       .from(1)
       .map(i => (i * number).toString)
       .map(addMissingZero)
