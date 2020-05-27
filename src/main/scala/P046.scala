@@ -5,7 +5,7 @@ object P046 {
 
   private def isSumOfPrimeAndTwiceSquare(number: Int): Boolean = {
     primes.takeWhile(_ < number).exists { prime =>
-      Math.sqrt((number - prime) / 2).isWhole
+      Math.sqrt(((number - prime) / 2).toDouble).isWhole
     }
   }
 

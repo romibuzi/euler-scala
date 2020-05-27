@@ -23,7 +23,7 @@ object MathHelper {
 
   // https://en.wikipedia.org/wiki/Pentagonal_number#Tests_for_pentagonal_numbers
   def isPentagonal(number: Long): Boolean =
-    ((Math.sqrt(1 + number * 24) + 1.0) / 6.0).isWhole
+    ((Math.sqrt((1 + number * 24).toDouble) + 1.0) / 6.0).isWhole
 
   def isPrime[T: Integral](number: T)(implicit numeric: Integral[T]): Boolean = {
     import numeric._
